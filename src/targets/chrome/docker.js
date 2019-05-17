@@ -177,7 +177,7 @@ function createChromeDockerTarget({
 
 
       host = await getNetworkHost(dockerId);
-      await waitOnCDPAvailable('0.0.0.0', port);
+      // await waitOnCDPAvailable('0.0.0.0', port);
       debug(`Docker started with id ${dockerId}`);
     } else {
       throw new Error(`Failed starting docker, ${stderr}`);
