@@ -31,7 +31,6 @@ new Promise((resolve, reject) => {
       resources: [`tcp:${host}:${port}`],
       delay: 50,
       interval: 100,
-      timeout: 10000,
     },
     err => {
                   console.log({
