@@ -210,6 +210,10 @@ function createChromeTarget(
       chromeEnableAnimations: true,
       clearBrowserCookies: false,
     });
+    console.log({
+      iframe: tab
+    });
+    
     const url = `${baseUrl}/iframe.html`;
     try {
       await withTimeout(LOADING_STORIES_TIMEOUT)(tab.loadUrl(url));
