@@ -80,6 +80,9 @@ console.log(321)
   ) => {
     let storybook;
 
+    console.log(JSON.stringify(target));
+    
+
     return {
       title: name,
       task: () =>
@@ -94,6 +97,11 @@ console.log(321)
           {
             title: 'Start',
             task: async ({ activeTargets }) => {
+
+              console.log(JSON.stringify(activeTargets));
+              console.log(JSON.stringify(target.start()));
+              
+
               await target.start();
               activeTargets.push(target);
             },

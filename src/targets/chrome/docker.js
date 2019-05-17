@@ -80,6 +80,11 @@ function createChromeDockerTarget({
   const dockerPath = 'docker';
   const runArgs = ['run', '--rm', '-d', '-P'];
 
+  console.log({
+    zed: 'DOcker target',   port, dockerId,host,dockerUrl
+  });
+  
+
   if (!process.env.CI) {
     runArgs.push(`--security-opt=seccomp=${__dirname}/docker-seccomp.json`);
   }
