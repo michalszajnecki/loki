@@ -81,14 +81,17 @@ function createChromeDockerTarget({
   const runArgs = ['run', '--rm', '-d', '-P'];
 
   console.log({
-    zed: 'DOcker target',   port, dockerId,host,dockerUrl
+    zed: 'DOcker target',   port, dockerId,host,dockerUrl, isCI: process.env.CI
   });
   
 
   if (!process.env.CI) {
     runArgs.push(`--security-opt=seccomp=${__dirname}/docker-seccomp.json`);
   }
-
+console.log({
+  test: baseUrl.indexOf('http://localhost') === 0,
+  test2: (baseUrl.indexOf('file:') === 0)
+})
   if (baseUrl.indexOf('http://localhost') === 0) {
     const ip = getLocalIPAddress();
     if (!ip) {
