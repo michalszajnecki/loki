@@ -70,7 +70,7 @@ async function runTests(flatConfigurations, options) {
     await fs.emptyDirSync(options.differenceDir);
     await placeGitignore([options.outputDir, options.differenceDir]);
   }
-
+console.log(321)
   const getTargetTasks = (
     name,
     target,

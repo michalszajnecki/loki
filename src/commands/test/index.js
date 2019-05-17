@@ -45,16 +45,16 @@ const getUpdateCommand = (errors, args) => {
 async function test(args) {
   const config = getConfig();
   const options = parseOptions(args, config);
-
+  
   if (options.diffingEngine === 'gm') {
     ensureDependencyAvailable('gm');
   }
-
+  
   const targetFilter = new RegExp(options.targetFilter);
   const configurationFilter = new RegExp(options.configurationFilter);
   const matchesFilters = ({ target }, name) =>
-    targetFilter.test(target) && configurationFilter.test(name);
-
+  targetFilter.test(target) && configurationFilter.test(name);
+  
   const configurations = pickBy(matchesFilters, config.configurations);
 
   if (Object.keys(configurations).length === 0) {
