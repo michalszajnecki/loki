@@ -70,7 +70,7 @@ async function runTests(flatConfigurations, options) {
     await fs.emptyDirSync(options.differenceDir);
     await placeGitignore([options.outputDir, options.differenceDir]);
   }
-console.log(321)
+
   const getTargetTasks = (
     name,
     target,
@@ -79,9 +79,6 @@ console.log(321)
     tolerance = 0
   ) => {
     let storybook;
-
-    console.log(JSON.stringify(target));
-    
 
     return {
       title: name,
@@ -97,11 +94,6 @@ console.log(321)
           {
             title: 'Start',
             task: async ({ activeTargets }) => {
-
-              console.log(JSON.stringify(activeTargets));
-              console.log(JSON.stringify(target.start()));
-              
-
               await target.start();
               activeTargets.push(target);
             },
