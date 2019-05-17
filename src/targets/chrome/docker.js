@@ -76,7 +76,7 @@ const getNetworkHost = async dockerId => {
 
 function createChromeDockerTarget({
   baseUrl = 'http://localhost:6006',
-  chromeDockerImage = 'yukinying/chrome-headless',
+  chromeDockerImage = 'zenika/alpine-chrome',
   chromeFlags = ['--headless', '--disable-gpu', '--hide-scrollbars'],
 }) {
   let port;
