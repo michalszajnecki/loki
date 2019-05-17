@@ -1,6 +1,6 @@
 {
   "chromeConcurrency": "4",
-  "chromeDockerImage": "zenika/alpine-chrome",
+  "chromeDockerImage": "justinribeiro/chrome-headless",
   "chromeFlags": "--headless --disable-gpu --hide-scrollbars",
   "chromeLoadTimeout": "60000",
   "chromeRetries": "0",
