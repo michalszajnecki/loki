@@ -167,13 +167,17 @@ function createChromeDockerTarget({
 
 
       const zedd = await execa('docker', ['ps']);
+      
+      
+      
+      console.log({zedd});
+      const zeddx = await execa('docker', ['container', 'logs', dockerId]);
+      
+      console.log({zeddx});
 
-
-
-	console.log({zedd});
 
       host = await getNetworkHost(dockerId);
-      await waitOnCDPAvailable(host, port);
+      await waitOnCDPAvailable('0.0.0.0', port);
       debug(`Docker started with id ${dockerId}`);
     } else {
       throw new Error(`Failed starting docker, ${stderr}`);
