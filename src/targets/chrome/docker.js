@@ -169,6 +169,10 @@ console.log({
 
     if (code === 0) {
       dockerId = stdout;
+
+      const {stdout} = await execa('docker', ['ps']);
+	console.log({stdout});
+
       host = await getNetworkHost(dockerId);
       await waitOnCDPAvailable(host, port);
       debug(`Docker started with id ${dockerId}`);
