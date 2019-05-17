@@ -108,6 +108,9 @@ console.log({
     dockerUrl = `file://${staticMountPath}`;
   }
 
+  console.log(9);
+  
+
   async function getIsImageDownloaded(imageName) {
     const { code, stdout, stderr } = await execa(dockerPath, [
       'images',
@@ -119,7 +122,7 @@ console.log({
     }
     return stdout.trim().length !== 0;
   }
-
+  console.log(8);
   async function ensureImageDownloaded() {
     ensureDependencyAvailable('docker');
 
@@ -128,10 +131,10 @@ console.log({
       await execa(dockerPath, ['pull', chromeDockerImage]);
     }
   }
-
+  console.log(7);
   async function start() {
     port = await getRandomPort();
-
+    console.log(6);
     ensureDependencyAvailable('docker');
     const args = runArgs
       .concat([
@@ -146,12 +149,14 @@ console.log({
         `--remote-debugging-port=${port}`,
       ])
       .concat(chromeFlags);
-
+      console.log({args});
+      
     debug(
       `Launching chrome in docker with command "${dockerPath} ${args.join(
         ' '
       )}"`
     );
+    console.log(5);
     const { code, stdout, stderr } = await execa(dockerPath, args);
     if (code === 0) {
       dockerId = stdout;
@@ -162,7 +167,7 @@ console.log({
       throw new Error(`Failed starting docker, ${stderr}`);
     }
   }
-
+  console.log(4);
   async function stop() {
     if (dockerId) {
       debug(`Killing chrome docker instance with id ${dockerId}`);
@@ -171,7 +176,7 @@ console.log({
       debug('No chrome docker instance to kill');
     }
   }
-
+  console.log(3);
   async function createNewDebuggerInstance() {
     debug(`Launching new tab with debugger at port ${host}:${port}`);
     const target = await CDP.New({ host, port });
@@ -185,13 +190,13 @@ console.log({
 
     return client;
   }
-
+  console.log(2);
   process.on('SIGINT', () => {
     if (dockerId) {
       execSync(`${dockerPath} kill ${dockerId}`);
     }
   });
-
+  console.log(1);
   return createChromeTarget(
     start,
     stop,
