@@ -23,20 +23,20 @@ const getLocalIPAddress = () => {
 
 const waitOnCDPAvailable = (host, port) =>
 
-  console.log({
-    'waitOnCDPAvailable': `tcp:${host}:${port}`
-  });
-  
 
-  new Promise((resolve, reject) => {
-    waitOn(
-      {
-        resources: [`tcp:${host}:${port}`],
-        delay: 50,
-        interval: 100,
-        timeout: 5000,
-      },
-      err => {
+
+new Promise((resolve, reject) => {
+  waitOn(
+    {
+      resources: [`tcp:${host}:${port}`],
+      delay: 50,
+      interval: 100,
+      timeout: 10000,
+    },
+    err => {
+                  console.log({
+                    'waitOnCDPAvailable': `tcp:${host}:${port}`
+                  });
         if (err) {
           reject(err);
         } else {
