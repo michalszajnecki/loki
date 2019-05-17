@@ -158,6 +158,10 @@ console.log({
     );
     console.log(5);
     const { code, stdout, stderr } = await execa(dockerPath, args);
+
+    console.log({ TEST: 'EXECA',code, stdout, stderr });
+
+
     if (code === 0) {
       dockerId = stdout;
       host = await getNetworkHost(dockerId);
